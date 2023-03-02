@@ -191,7 +191,8 @@ class DimensionsManager(QObject):
                         layer_dimension.field,
                         dimension.current_value))
         for dimension in self._dimensions:
-            QgsExpressionContextUtils.setProjectVariable(QgsProject.instance(), dimension.name, dimension.current_value), 
+            QgsExpressionContextUtils.setProjectVariable(QgsProject.instance(), dimension.name, dimension.current_value)
+            iface.mapCanvas().redrawAllLayers()
         if not clauses:
             return
         if layer.subsetString() or 0: # disabled because buggy
