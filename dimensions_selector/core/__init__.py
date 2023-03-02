@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import json
-from qgis.core import QgsProject
+from qgis.core import QgsProject, QgsExpressionContextUtils
 from qgis.utils import iface
 from qgis.PyQt.QtCore import QObject, pyqtSignal
 
@@ -143,10 +143,14 @@ class DimensionsManager(QObject):
         self.refresh_filters()
 
     def backup_subset_strings(self):
+        return #disable because buggy
         for layer in QgsProject.instance().mapLayers().values():
             layer.setCustomProperty('{}/subsetString_backup'.format(self.scope), layer.subsetString())
 
     def restore_subset_strings(self):
+        for dimension in self._dimensions:  # add this to remove var when exiting
+            QgsExpressionContextUtils.removeProjectVariable(QgsProject.instance(), dimension.name)
+        return #disable because buggy
         for layer in QgsProject.instance().mapLayers().values():
             sql = layer.customProperty('{}/subsetString_backup'.format(self.scope), None)
             if sql is not None:
@@ -186,9 +190,11 @@ class DimensionsManager(QObject):
                     clauses.append('"{}" = \'{}\''.format(
                         layer_dimension.field,
                         dimension.current_value))
+        for dimension in self._dimensions:
+            QgsExpressionContextUtils.setProjectVariable(QgsProject.instance(), dimension.name, dimension.current_value), 
         if not clauses:
             return
-        if layer.subsetString():
+        if layer.subsetString() or 0: # disabled because buggy
             sql = '( {} ) AND ( {} )'.format(
                 layer.subsetString(),
                 ') AND ('.join(clauses)
