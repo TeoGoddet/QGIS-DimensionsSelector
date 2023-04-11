@@ -1,0 +1,40 @@
+# This file contains metadata for your plugin. Since 
+# version 2.0 of QGIS this is the proper way to supply 
+# information about a plugin. The old method of 
+# embedding metadata in __init__.py will 
+# is no longer supported since version 2.0.
+
+# This file should be included when you package your plugin.# Mandatory items:
+
+[general]
+name=Variable Selector
+qgisMinimumVersion=3.10
+qgisMaximumVersion=3.99
+description=Variable Selector Plugin is based on Camp2Camp DimensionsSelector plugin, it propose a new way for the filtering method using expression and variable.
+version=0.2
+author=TéoGoddet
+email=teo.goddet@balelec.ch
+
+about=Allow filtering multiple layers on a common field (for example 'floor') by selecting one value in an ordered list. The value is added to a qgis variable and usable in expressions to do the actual filtering.
+
+tracker=https://github.com/TeoGoddet/QGIS-VariableSelector/issues
+repository=https://github.com/TeoGoddet/QGIS-VariableSelector
+# End of mandatory metadata
+
+# Recommended items:
+
+# Uncomment the following line and add your changelog:
+# changelog=
+
+# Tags are comma separated with spaces allowed
+tags=python
+
+homepage=https://github.com/TeoGoddet/QGIS-VariableSelector/blob/master/README.md
+category=Plugins
+icon=icon.png
+# experimental flag
+experimental=False
+
+# deprecated flag (applies to the whole plugin, not just a single version)
+deprecated=False
+
