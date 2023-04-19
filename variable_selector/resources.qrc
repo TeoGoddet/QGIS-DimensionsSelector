@@ -1,5 +1,5 @@
 <RCC>
-    <qresource prefix="/plugins/dimensions_selector">
+    <qresource prefix="/plugins/variable_selector">
         <file>icon.png</file>
     </qresource>
 </RCC>

@@ -34,11 +34,11 @@ from .core import DimensionsManager
 # Initialize Qt resources from file resources.py
 from .resources import *  # noqa: F401 F403
 # Import the code for the dialog
-from .gui.actions import DimensionSelectorAction
+from .gui.actions import VariableSelectorAction
 from .gui.settings_dialog import SettingsDialog
 
 
-class DimensionsSelectorPlugin():
+class VariableSelectorPlugin():
     """QGIS Plugin Implementation."""
 
     def __init__(self, iface):
@@ -55,7 +55,7 @@ class DimensionsSelectorPlugin():
         self.plugin_dir = os.path.dirname(__file__)
         # initialize locale
         locale = QSettings().value('locale/userLocale')[0:2]
-        locale_path = resource_filename("dimensions_selector", "i18n/{}.qm".format(locale))
+        locale_path = resource_filename("variable_selector", "i18n/{}.qm".format(locale))
 
         if os.path.exists(locale_path):
             self.translator = QTranslator()
@@ -68,7 +68,7 @@ class DimensionsSelectorPlugin():
         self.actions = []
         self.dimensionsSelectors = []
 
-        self.manager = DimensionsManager('dimensions_selector', iface.mainWindow())
+        self.manager = DimensionsManager('variable_selector', iface.mainWindow())
         self.manager.configurationChanged.connect(self.configurationChanged)
 
     # noinspection PyMethodMayBeStatic
@@ -84,7 +84,7 @@ class DimensionsSelectorPlugin():
         :rtype: QString
         """
         # noinspection PyTypeChecker,PyArgumentList,PyCallByClass
-        return QCoreApplication.translate('DimensionsSelectorPlugin', message)
+        return QCoreApplication.translate('VariableSelectorPlugin', message)
 
     def initGui(self):
         """Create the menu entries and toolbar icons inside the QGIS GUI."""

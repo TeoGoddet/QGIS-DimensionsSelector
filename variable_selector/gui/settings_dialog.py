@@ -33,8 +33,8 @@ from qgis.PyQt import QtWidgets
 from qgis.PyQt.QtCore import pyqtSlot, Qt, QSortFilterProxyModel, QAbstractTableModel, QModelIndex, QVariant
 from qgis.PyQt.QtWidgets import QHeaderView, QStyledItemDelegate, QAbstractItemView
 
-from dimensions_selector.core import Dimension, LayerDimension
-from dimensions_selector.gui.help import openHelp
+from variable_selector.core import Dimension, LayerDimension
+from variable_selector.gui.help import openHelp
 
 FORM_CLASS, _ = uic.loadUiType(os.path.join(
     os.path.dirname(__file__), '..', 'ui', 'settings_dialog.ui'))

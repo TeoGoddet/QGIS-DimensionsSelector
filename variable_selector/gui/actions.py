@@ -30,7 +30,7 @@ class DimensionValuesModel(QAbstractTableModel):
             return self._items[index.row()][0]
 
 
-class DimensionSelectorAction(QWidgetAction):
+class VariableSelectorAction(QWidgetAction):
 
     valueChanged = pyqtSignal()
 
