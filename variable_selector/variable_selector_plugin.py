@@ -137,7 +137,7 @@ class VariableSelectorPlugin():
         for dimension in self.manager.dimensions():
             if not dimension.active:
                 continue
-            action = DimensionSelectorAction(dimension, self.iface.mainWindow())
+            action = VariableSelectorAction(dimension, self.iface.mainWindow())
             action.valueChanged.connect(self.dimensionValueChanged)
             self.toolbar.addAction(action)
             self.dimensionsSelectors.append(action)
